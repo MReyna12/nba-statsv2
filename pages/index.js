@@ -27,7 +27,7 @@ export default function Home(props) {
               >
                 starting five
               </h1>
-              <p className="subtitle is-3 is-size-5-mobile has-text-white is-capitalized has-text-centered mb-6">
+              <p className="subtitle is-3 is-size-5-mobile has-text-white is-capitalized has-text-centered">
                 Search 2021 - 2022 NBA regular season stats
               </p>
               <div className="column is-full-mobile is-half">
