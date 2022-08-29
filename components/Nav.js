@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
+import Input from './Input';
+import Link from 'next/link';
 import Image from 'next/image';
+import startingFiveLogo from '../public/starting-five.png';
 
 function Nav() {
   const router = useRouter();
@@ -11,12 +14,8 @@ function Nav() {
     return (
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://bulma.io">
-            <Image
-              src="https://bulma.io/images/bulma-logo.png"
-              width={112}
-              height={28}
-            />
+          <a className="navbar-item" href="/">
+            <Image src={startingFiveLogo} width={200} height={80} />
           </a>
 
           <a
@@ -35,11 +34,7 @@ function Nav() {
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-end">
             <div className="navbar-item">
-              <input
-                class="input is-medium"
-                type="text"
-                placeholder="Medium input"
-              />
+              <Input />
             </div>
           </div>
         </div>
@@ -51,20 +46,22 @@ function Nav() {
     return (
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://bulma.io">
-            <img
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-              height="28"
-            />
-          </a>
+          <Link href="/">
+            <a>
+              <Image src={startingFiveLogo} width={200} height={80} />
+            </a>
+          </Link>
         </div>
       </div>
     );
   };
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
+    <nav
+      className="navbar has-background-primary"
+      role="navigation"
+      aria-label="main navigation"
+    >
       {path === '/' ? partialNavbar() : fullNavbar()}
     </nav>
   );
