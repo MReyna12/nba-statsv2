@@ -1,8 +1,15 @@
 import Head from 'next/head';
-import Image from 'next/image';
+import Input from '../components/Input';
 import homeStyles from '../styles/Home.module.css';
 
-export default function Home() {
+export default function Home(props) {
+  const teams = props.data.map((team) => {
+    return {
+      teamName: team.full_name,
+      id: team.id,
+    };
+  });
+
   return (
     <div>
       <Head>
@@ -24,11 +31,7 @@ export default function Home() {
                 Search 2021 - 2022 NBA regular season stats
               </p>
               <div className="column is-full-mobile is-half">
-                <input
-                  className="input is-large is-info is-hovered has-text-black"
-                  type="text"
-                  placeholder="Enter the name of any NBA team"
-                />
+                <Input teamInfo={teams} />
               </div>
             </div>
           </div>
@@ -37,3 +40,12 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const res = await fetch(`https://www.balldontlie.io/api/v1/teams`);
+  const teams = await res.json();
+
+  return {
+    props: teams,
+  };
+};

@@ -33,9 +33,7 @@ function Nav() {
 
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-end">
-            <div className="navbar-item">
-              <Input />
-            </div>
+            <Input />
           </div>
         </div>
       </div>
