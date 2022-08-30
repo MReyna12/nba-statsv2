@@ -1,12 +1,10 @@
 import TeamRecord from '../../../components/TeamRecord';
 
 const team = (props) => {
-  //console.log(props);
-
   return (
     <TeamRecord
       games={props.regularSeasonData.data}
-      teamName={props.regularSeasonData.teamName}
+      teamName={props.teamName}
     />
   );
 };
