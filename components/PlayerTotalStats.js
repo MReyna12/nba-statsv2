@@ -3,16 +3,21 @@ import fixDecimals from '../helpers/fix-decimals';
 function PlayerTotalStats(props) {
   //console.log(props.playerData);
 
-  const fieldGoalStats = props.playerData.map((game) => {
+  // Map through the games for all five players and store various shooting related stats in an object
+  const shootingStats = props.playerData.map((game) => {
     let fieldGoalsMade = 0;
     let fieldGoalsAttempted = 0;
     let threePointMade = 0;
     let threePointAttempted = 0;
+    let freeThrowsMade = 0;
+    let freeThrowsAttempted = 0;
     game.data.forEach((oneGame) => {
       fieldGoalsMade += oneGame.fgm;
       fieldGoalsAttempted += oneGame.fga;
       threePointMade += oneGame.fg3m;
       threePointAttempted += oneGame.fg3a;
+      freeThrowsMade += oneGame.ftm;
+      freeThrowsAttempted += oneGame.fta;
     });
 
     const fieldGoalPercentage = fixDecimals(
@@ -27,6 +32,10 @@ function PlayerTotalStats(props) {
       (fieldGoalsMade + 0.5 * threePointMade) / fieldGoalsAttempted
     );
 
+    const freeThrowPercentage = fixDecimals(
+      freeThrowsMade / freeThrowsAttempted
+    );
+
     return {
       fieldGoalsMade: fieldGoalsMade,
       fieldGoalsAttempted: fieldGoalsAttempted,
@@ -35,10 +44,12 @@ function PlayerTotalStats(props) {
       threePointAttempted: threePointAttempted,
       threePointPercentage: threePointPercentage,
       effectiveFieldGoalPercentage: effectiveFieldGoalPercentage,
+      freeThrowsMade: freeThrowsMade,
+      freeThrowsAttempted: freeThrowsAttempted,
+      freeThrowPercentage: freeThrowPercentage,
     };
   });
 
-  console.log(fieldGoalStats);
   return (
     <div className="state-displayHidden">
       <section className="layout-container">
