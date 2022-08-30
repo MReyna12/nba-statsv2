@@ -1,13 +1,5 @@
 function TeamRecord(props) {
-  // Determine the home and visitor games for the 2021-2022 regular season
-  const homeGames = props.games.filter(
-    (game) => game.home_team.full_name === props.teamName
-  );
-
-  const visitorGames = props.games.filter(
-    (game) => game.visitor_team.full_name === props.teamName
-  );
-
+  // Determine the home and visitor record for the 2021-2022 regular season
   const homeRecord = () => {
     let wins = 0;
     let losses = 0;
