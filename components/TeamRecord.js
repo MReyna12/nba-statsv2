@@ -1,4 +1,5 @@
 import TeamRecordBody from './TeamRecordBody';
+import fixDecimals from '../helpers/fix-decimals';
 
 function TeamRecord(props) {
   // Determine the home record for the 2021-2022 regular season
@@ -155,9 +156,7 @@ function TeamRecord(props) {
     const totalWins = homeWins + visitorWins;
     const totalLosses = homeLosses + visitorLosses;
 
-    const winPercentage = (totalWins / (totalWins + totalLosses))
-      .toFixed(3)
-      .replace('0', '');
+    const winPercentage = fixDecimals(totalWins / (totalWins + totalLosses));
 
     return {
       totalWins: totalWins,

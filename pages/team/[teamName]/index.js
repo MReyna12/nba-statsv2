@@ -1,37 +1,68 @@
 import TeamRecord from '../../../components/TeamRecord';
+import PlayerTotalStats from '../../../components/PlayerTotalStats';
+import playerIDNumbers from '../../../helpers/getPlayerID';
 
 const team = (props) => {
   return (
-    <TeamRecord
-      games={props.regularSeasonData.data}
-      teamName={props.teamName}
-    />
+    <div>
+      <PlayerTotalStats playerData={props.playerGames} />
+      <TeamRecord
+        games={props.regularSeasonData.data}
+        teamName={props.teamName}
+      />
+    </div>
   );
 };
 
 export default team;
 
 export const getStaticProps = async (context) => {
-  // Place the name + the team id into an array
-  const splitName = context.params.teamName.split('-');
+  try {
+    // Place the name + the team id into an array
+    const splitName = context.params.teamName.split('-');
 
-  // The id is always the last element in the splitName array
-  const id = splitName[splitName.length - 1];
+    // The id is always the last element in the splitName array
+    const id = splitName[splitName.length - 1];
 
-  // Store the team name without the hypens and the id number. The id number is always the last element of the splitName array.
-  const standardTeamName = splitName.slice(0, splitName.length - 1).join(' ');
+    // Store the team name without the hypens and the id number. The id number is always the last element of the splitName array.
+    const standardTeamName = splitName.slice(0, splitName.length - 1).join(' ');
 
-  const res = await fetch(
-    `https://www.balldontlie.io/api/v1/games?seasons[]=2021&team_ids[]=${id}&per_page=100&start_date=2021-10-19&end_date=2022-04-11`
-  );
-  const regularSeasonData = await res.json();
+    // Fetch the team related stats
+    const res = await fetch(
+      `https://www.balldontlie.io/api/v1/games?seasons[]=2021&team_ids[]=${id}&per_page=100&start_date=2021-10-19&end_date=2022-04-11`
+    );
+    const regularSeasonData = await res.json();
 
-  return {
-    props: {
-      regularSeasonData: regularSeasonData,
-      teamName: standardTeamName,
-    },
-  };
+    // Fetch the player related stats - because the API does not provide an easy way to find player IDs without searching through thousands of players, I manually found the player Ids and put them into a helper object
+    const playerIds = playerIDNumbers.playerID[standardTeamName];
+
+    const playerUrls = [
+      `https://www.balldontlie.io/api/v1/stats?per_page=100&start_date=2021-10-18&end_date=2022-04-11&player_ids[]=${playerIds[0]}`,
+      `https://www.balldontlie.io/api/v1/stats?per_page=100&start_date=2021-10-18&end_date=2022-04-11&player_ids[]=${playerIds[1]}`,
+      `https://www.balldontlie.io/api/v1/stats?per_page=100&start_date=2021-10-18&end_date=2022-04-11&player_ids[]=${playerIds[2]}`,
+      `https://www.balldontlie.io/api/v1/stats?per_page=100&start_date=2021-10-18&end_date=2022-04-11&player_ids[]=${playerIds[3]}`,
+      `https://www.balldontlie.io/api/v1/stats?per_page=100&start_date=2021-10-18&end_date=2022-04-11&player_ids[]=${playerIds[4]}`,
+    ];
+
+    const fetchPlayerGames = async () => {
+      const playerRes = await Promise.all(
+        playerUrls.map((url) => fetch(url).then((res) => res.json()))
+      );
+      return playerRes;
+    };
+
+    const playerGames = await fetchPlayerGames();
+
+    return {
+      props: {
+        regularSeasonData: regularSeasonData,
+        teamName: standardTeamName,
+        playerGames: playerGames,
+      },
+    };
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export const getStaticPaths = async () => {
