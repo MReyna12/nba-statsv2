@@ -1,3 +1,5 @@
+import TeamRecordBody from './TeamRecordBody';
+
 function TeamRecord(props) {
   // Determine the home record for the 2021-2022 regular season
   const homeRecord = () => {
@@ -163,6 +165,50 @@ function TeamRecord(props) {
       winPercentage: winPercentage,
     };
   };
+
+  return (
+    <section>
+      <div className="layout-container">
+        <h2>Team Record</h2>
+        <div className="state-overflowX">
+          <table className="modules-table">
+            <thead>
+              <tr className="modules-trHeaderStyle">
+                <th className="modules-thHeaderStyle modules-teamColors modules-firstTableCellStyle">
+                  <span>W</span>
+                </th>
+                <th className="modules-thHeaderStyle modules-teamColors">
+                  <span>L</span>
+                </th>
+                <th className="modules-thHeaderStyle modules-teamColors">
+                  <span>PCT</span>
+                </th>
+                <th className="modules-thHeaderStyle modules-teamColors">
+                  <span>HOME</span>
+                </th>
+                <th className="modules-thHeaderStyle modules-teamColors">
+                  <span>AWAY</span>
+                </th>
+                <th className="modules-thHeaderStyle modules-teamColors">
+                  <span>DIV</span>
+                </th>
+                <th className="modules-thHeaderStyle modules-teamColors modules-lastTableCellStyle">
+                  <span>CONF</span>
+                </th>
+              </tr>
+            </thead>
+            <TeamRecordBody
+              teamRecord={overallRecord()}
+              homeRecord={homeRecord()}
+              visitorRecord={visitorRecord()}
+              divisionRecord={divisionRecord()}
+              conferenceRecord={conferenceRecord()}
+            />
+          </table>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default TeamRecord;
