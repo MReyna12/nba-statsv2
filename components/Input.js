@@ -19,6 +19,8 @@ const Input = (props) => {
 
   const router = useRouter();
 
+  const route = inputData.teamName.replaceAll(' ', '-');
+
   function handleSubmit(event) {
     event.preventDefault();
     const teamExists = props.teamInfo.find(
@@ -26,7 +28,7 @@ const Input = (props) => {
     );
 
     if (teamExists) {
-      router.push('/team/' + inputData.teamName);
+      router.push('/team/' + route);
     } else if (!teamExists) {
       setAlert(true);
     }
