@@ -1,11 +1,11 @@
 import TeamRecord from '../../../components/TeamRecord';
-import PlayerTotalStats from '../../../components/PlayerTotalStats';
+import AllPlayerStats from '../../../components/AllPlayerStats';
 import playerIDNumbers from '../../../helpers/getPlayerID';
 
 const team = (props) => {
   return (
     <div>
-      <PlayerTotalStats playerData={props.playerGames} />
+      <AllPlayerStats playerData={props.playerGames} />
       <TeamRecord
         games={props.regularSeasonData.data}
         teamName={props.teamName}
