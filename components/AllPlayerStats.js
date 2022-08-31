@@ -1,5 +1,6 @@
 import fixDecimals from '../helpers/fix-decimals';
 import StatTableCell from './StatTableCell';
+import PlayerCards from './PlayerCards';
 
 function AllPlayerStats(props) {
   // Map through the games for all five players and create table rows and table data cells with each player's stats
@@ -98,7 +99,17 @@ function AllPlayerStats(props) {
   });
 
   return (
-    <div className="state-displayHidden">
+    <div>
+      <section>
+        <div className="layout-container">
+          <div>
+            <h2>Starting Five Averages</h2>
+          </div>
+          <div className="layout-playerWrapper modules-firstPlayerStatBox">
+            <PlayerCards />
+          </div>
+        </div>
+      </section>
       <section className="layout-container">
         <div>
           <h2>Totals</h2>
