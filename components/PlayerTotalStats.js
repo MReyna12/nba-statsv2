@@ -58,7 +58,7 @@ function PlayerTotalStats(props) {
     };
   });
 
-  // Map through the games for all five players ands tore non-shooting stats in an object
+  // Map through the games for all five players and store non-shooting stats in an object
   const nonShootingStats = props.playerData.map((game) => {
     let rebounds = 0;
     let assists = 0;
