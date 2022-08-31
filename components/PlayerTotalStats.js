@@ -11,6 +11,9 @@ function PlayerTotalStats(props) {
     let threePointAttempted = 0;
     let freeThrowsMade = 0;
     let freeThrowsAttempted = 0;
+    let totalPoints = 0;
+    let gamesPlayed = game.data.length;
+
     game.data.forEach((oneGame) => {
       fieldGoalsMade += oneGame.fgm;
       fieldGoalsAttempted += oneGame.fga;
@@ -18,6 +21,7 @@ function PlayerTotalStats(props) {
       threePointAttempted += oneGame.fg3a;
       freeThrowsMade += oneGame.ftm;
       freeThrowsAttempted += oneGame.fta;
+      totalPoints += oneGame.pts;
     });
 
     const fieldGoalPercentage = fixDecimals(
@@ -36,6 +40,8 @@ function PlayerTotalStats(props) {
       freeThrowsMade / freeThrowsAttempted
     );
 
+    const pointsPerGame = fixDecimals(totalPoints / gamesPlayed);
+
     return {
       fieldGoalsMade: fieldGoalsMade,
       fieldGoalsAttempted: fieldGoalsAttempted,
@@ -47,6 +53,44 @@ function PlayerTotalStats(props) {
       freeThrowsMade: freeThrowsMade,
       freeThrowsAttempted: freeThrowsAttempted,
       freeThrowPercentage: freeThrowPercentage,
+      totalPoints: totalPoints,
+      pointsPerGame: pointsPerGame,
+    };
+  });
+
+  // Map through the games for all five players ands tore non-shooting stats in an object
+  const nonShootingStats = props.playerData.map((game) => {
+    let rebounds = 0;
+    let assists = 0;
+    let steals = 0;
+    let blocks = 0;
+    let turnovers = 0;
+    let personalFouls = 0;
+    let gamesPlayed = game.data.length;
+
+    game.data.forEach((oneGame) => {
+      rebounds += oneGame.reb;
+      assists += oneGame.ast;
+      steals += oneGame.stl;
+      blocks += oneGame.blk;
+      turnovers += oneGame.turnover;
+      personalFouls += oneGame.pf;
+    });
+
+    const reboundsPerGame = fixDecimals(rebounds / gamesPlayed);
+
+    const assistsPerGame = fixDecimals(assists / gamesPlayed);
+
+    return {
+      rebounds: rebounds,
+      reboundsPerGame: reboundsPerGame,
+      assists: assists,
+      assistsPerGame: assistsPerGame,
+      blocks: blocks,
+      steals: steals,
+      turnovers: turnovers,
+      personalFouls: personalFouls,
+      gamesPlayed: gamesPlayed,
     };
   });
 
