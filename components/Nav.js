@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import startingFiveLogo from '../public/starting-five.png';
+import Link from "next/link";
+import Image from "next/image";
+import startingFiveLogo from "../public/starting-five.png";
 
 function Nav() {
   return (
