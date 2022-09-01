@@ -1,6 +1,7 @@
 import fixDecimals from '../helpers/fix-decimals';
 import StatTableCell from './StatTableCell';
 import PlayerCards from './PlayerCards';
+import color from '../helpers/get-team-colors';
 
 function AllPlayerStats(props) {
   // Map through the games for all five players and create table rows and table data cells with each player's stats
@@ -101,10 +102,15 @@ function AllPlayerStats(props) {
     );
   });
 
+  const theadBackgroundColor =
+    color.teamColor[props.playerData[0].data[0].team.full_name][0];
+  const theadFontColor =
+    color.teamColor[props.playerData[0].data[0].team.full_name][1];
+
   return (
-    <div>
-      <section className="state-displayHidden">
-        <div className="layout-container">
+    <div className="container">
+      <section>
+        <div>
           <div className="layout-teamNameLogo">
             <img
               id="module-teamLogo"
@@ -132,69 +138,69 @@ function AllPlayerStats(props) {
           </div>
         </div>
       </section>
-      <section className="layout-container">
+      <section>
         <div>
-          <h2>Totals</h2>
-          <div className="state-overflowX">
-            <table className="modules-table">
-              <thead>
+          <h2 className="title">Totals</h2>
+          <div className="table-container">
+            <table className="table is-fullwidth">
+              <thead style={{ backgroundColor: theadBackgroundColor }}>
                 <tr className="modules-trHeaderStyle">
-                  <th className="modules-thHeaderStyle modules-teamColors modules-firstTableCellStyle">
-                    <span>Name</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Player name">Name</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>G</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Games played">G</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>FG</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Field goals made">FG</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>FGA</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Field goals attempted">FGA</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>FG%</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Field goals made percentage">FG%</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>3P</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Three pointers made">3P</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>3PA</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Three pointers attempted">3PA</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>3P%</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Three pointers made percentage">3P%</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>eFG%</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Effective field goal percentage">eFG%</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>FT</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Free throws made">FT</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>FTA</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Free throws attempted">FTA</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>FT%</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Free throws made percentage">FT%</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>TRB</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Rebounds">REB</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>AST</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Assists">AST</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>STL</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Steals">STL</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>BLK</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Blocks">BLK</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>TOV</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Turnovers">TOV</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors">
-                    <span>PF</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Personal fouls">PF</abbr>
                   </th>
-                  <th className="modules-thHeaderStyle modules-teamColors modules-lastTableCellStyle">
-                    <span>PTS</span>
+                  <th style={{ color: theadFontColor }}>
+                    <abbr title="Points scored">PTS</abbr>
                   </th>
                 </tr>
               </thead>

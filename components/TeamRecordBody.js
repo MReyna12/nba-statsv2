@@ -1,34 +1,24 @@
 function TeamRecordBody(props) {
   // Create table body populated the data from functions above
   return (
-    <tbody className="modules-trBodyStyle">
+    <tbody>
       <tr>
-        <td className="modules-teamRecordTDPadding">
-          <span className="modules-totalWins">
-            {props.teamRecord.totalWins}
-          </span>
+        <td className="has-text-weight-bold">{props.teamRecord.totalWins}</td>
+        <td className="has-text-weight-bold">{props.teamRecord.totalLosses}</td>
+        <td className="has-text-weight-bold">
+          {props.teamRecord.winPercentage}
         </td>
-        <td className="modules-teamRecordTDPadding">
-          <span className="modules-totalLosses">
-            {props.teamRecord.totalLosses}
-          </span>
+        <td className="has-text-weight-bold">
+          {`${props.homeRecord.homeWins} - ${props.homeRecord.homeLosses}`}
         </td>
-        <td className="modules-teamRecordTDPadding">
-          <span className="modules-winPercentage">
-            {props.teamRecord.winPercentage}
-          </span>
+        <td className="has-text-weight-bold">
+          {`${props.visitorRecord.visitorWins} - ${props.visitorRecord.visitorLosses}`}
         </td>
-        <td className="modules-teamRecordTDPadding">
-          <span className="modules-homeRecord">{`${props.homeRecord.homeWins} - ${props.homeRecord.homeLosses}`}</span>
+        <td className="has-text-weight-bold">
+          {`${props.divisionRecord.divisionWins} - ${props.divisionRecord.divisionLosses}`}
         </td>
-        <td className="modules-teamRecordTDPadding">
-          <span className="modules-awayRecord">{`${props.visitorRecord.visitorWins} - ${props.visitorRecord.visitorLosses}`}</span>
-        </td>
-        <td className="modules-teamRecordTDPadding">
-          <span className="modules-divisionRecord">{`${props.divisionRecord.divisionWins} - ${props.divisionRecord.divisionLosses}`}</span>
-        </td>
-        <td className="modules-teamRecordLastTDPadding">
-          <span className="modules-conferenceRecord">{`${props.conferenceRecord.conferenceWins} - ${props.conferenceRecord.conferenceLosses}`}</span>
+        <td className="has-text-weight-bold">
+          {`${props.conferenceRecord.conferenceWins} - ${props.conferenceRecord.conferenceLosses}`}
         </td>
       </tr>
     </tbody>

@@ -1,95 +1,45 @@
 function StatTableCell(props) {
   return (
     <>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneName">
-          {props.statTotals.playerName}
-        </span>
+      <td className="has-text-weight-bold">{props.statTotals.playerName}</td>
+      <td className="has-text-weight-bold">{props.statTotals.gamesPlayed}</td>
+      <td className="has-text-weight-bold">
+        {props.statTotals.fieldGoalsMade}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneGamesPlayed">
-          {props.statTotals.gamesPlayed}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.fieldGoalsAttempted}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneFG">
-          {props.statTotals.fieldGoalsMade}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.fieldGoalPercentage}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneFGA">
-          {props.statTotals.fieldGoalsAttempted}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.threePointMade}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneFGP">
-          {props.statTotals.fieldGoalPercentage}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.threePointAttempted}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOne3P">
-          {props.statTotals.threePointMade}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.threePointPercentage}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOne3PA">
-          {props.statTotals.threePointAttempted}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.effectiveFieldGoalPercentage}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOne3PP">
-          {props.statTotals.threePointPercentage}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.freeThrowsMade}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneEFGP">
-          {props.statTotals.effectiveFieldGoalPercentage}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.fieldGoalsAttempted}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneFT">
-          {props.statTotals.freeThrowsMade}
-        </span>
+      <td className="has-text-weight-bold">
+        {props.statTotals.freeThrowPercentage}
       </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneFTA">
-          {props.statTotals.fieldGoalsAttempted}
-        </span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneFTP">
-          {props.statTotals.freeThrowPercentage}
-        </span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneTRB">
-          {props.statTotals.rebounds}
-        </span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneAST">{props.statTotals.assists}</span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneSTL">{props.statTotals.steals}</span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneBLK">{props.statTotals.blocks}</span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOneTOV">
-          {props.statTotals.turnovers}
-        </span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOnePF">
-          {props.statTotals.personalFouls}
-        </span>
-      </td>
-      <td className="modules-totalsTDStyle">
-        <span className="modules-playerOnePTS">
-          {props.statTotals.totalPoints}
-        </span>
-      </td>
+      <td className="has-text-weight-bold">{props.statTotals.rebounds}</td>
+      <td className="has-text-weight-bold">{props.statTotals.assists}</td>
+      <td className="has-text-weight-bold">{props.statTotals.steals}</td>
+      <td className="has-text-weight-bold">{props.statTotals.blocks}</td>
+      <td className="has-text-weight-bold">{props.statTotals.turnovers}</td>
+      <td className="has-text-weight-bold">{props.statTotals.personalFouls}</td>
+      <td className="has-text-weight-bold">{props.statTotals.totalPoints}</td>
     </>
   );
 }
