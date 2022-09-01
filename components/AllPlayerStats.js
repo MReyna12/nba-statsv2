@@ -8,8 +8,6 @@ function AllPlayerStats(props) {
     // Store each player's first and last name
     let playerName = `${game.data[0].player.first_name} ${game.data[0].player.last_name}`;
 
-    let key = game.data[0].player.id;
-
     // Destructuring assignment - allows unpacking values from arrays into distrinct variables.
     let [
       fieldGoalsMade,
@@ -69,7 +67,7 @@ function AllPlayerStats(props) {
 
     const assistsPerGame = fixDecimals(assists / gamesPlayed);
 
-    const statTotals = {
+    return {
       playerName: playerName,
       gamesPlayed: gamesPlayed,
       fieldGoalsMade: fieldGoalsMade,
@@ -83,17 +81,22 @@ function AllPlayerStats(props) {
       freeThrowsAttempted: freeThrowsAttempted,
       freeThrowPercentage: freeThrowPercentage,
       totalPoints: totalPoints,
+      pointsPerGame: pointsPerGame,
       rebounds: rebounds,
+      reboundsPerGame: reboundsPerGame,
       assists: assists,
+      assistsPerGame: assistsPerGame,
       steals: steals,
       blocks: blocks,
       turnovers: turnovers,
       personalFouls: personalFouls,
     };
+  });
 
+  const playerTableData = stats.map((player) => {
     return (
-      <tr key={key}>
-        <StatTableCell statTotals={statTotals} />
+      <tr key={player.id}>
+        <StatTableCell statTotals={player} />
       </tr>
     );
   });
@@ -106,7 +109,7 @@ function AllPlayerStats(props) {
             <h2>Starting Five Averages</h2>
           </div>
           <div className="layout-playerWrapper modules-firstPlayerStatBox">
-            <PlayerCards />
+            <PlayerCards playerAverages={stats} />
           </div>
         </div>
       </section>
@@ -176,7 +179,7 @@ function AllPlayerStats(props) {
                   </th>
                 </tr>
               </thead>
-              <tbody>{stats}</tbody>
+              <tbody>{playerTableData}</tbody>
             </table>
           </div>
         </div>
