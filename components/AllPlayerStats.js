@@ -103,6 +103,22 @@ function AllPlayerStats(props) {
 
   return (
     <div>
+      <section className="state-displayHidden">
+        <div className="layout-container">
+          <div className="layout-teamNameLogo">
+            <img
+              id="module-teamLogo"
+              src={`https://nba-team.s3.amazonaws.com/${props.teamImgRoute}/${props.teamImgRoute}.png`}
+              alt=""
+            />
+            <h1>{props.playerData[0].data[0].team.full_name}</h1>
+          </div>
+          <div className="modules-teamRecord">
+            <span>2021-2022 Regular Season Record:</span>
+            <span className="modules-overallRecord"></span>
+          </div>
+        </div>
+      </section>
       <section>
         <div className="layout-container">
           <div>
