@@ -109,7 +109,10 @@ function AllPlayerStats(props) {
             <h2>Starting Five Averages</h2>
           </div>
           <div className="layout-playerWrapper modules-firstPlayerStatBox">
-            <PlayerCards playerAverages={stats} />
+            <PlayerCards
+              playerAverages={stats}
+              teamRoute={props.teamImgRoute}
+            />
           </div>
         </div>
       </section>

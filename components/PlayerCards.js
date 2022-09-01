@@ -1,9 +1,15 @@
 function PlayerCards(props) {
+  const team = props.teamRoute;
   const card = props.playerAverages.map((player) => {
+    const playerName = player.playerName.split(' ').join('-');
     return (
       <>
         <figure className="modules-playerImg">
-          <img id="module-playerOneImg" src="" alt="" />
+          <img
+            id="module-playerOneImg"
+            src={`https://nba-team.s3.amazonaws.com/${team}/${playerName}.png`}
+            alt=""
+          />
         </figure>
         <aside className="modules-statBlockBorder">
           <h4 className="modules-playerOneName modules-teamColors">

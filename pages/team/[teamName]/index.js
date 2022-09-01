@@ -5,7 +5,10 @@ import playerIDNumbers from '../../../helpers/getPlayerID';
 const team = (props) => {
   return (
     <div>
-      <AllPlayerStats playerData={props.playerGames} />
+      <AllPlayerStats
+        playerData={props.playerGames}
+        teamImgRoute={props.teamImgRoute}
+      />
       <TeamRecord
         games={props.regularSeasonData.data}
         teamName={props.teamName}
@@ -58,6 +61,7 @@ export const getStaticProps = async (context) => {
         regularSeasonData: regularSeasonData,
         teamName: standardTeamName,
         playerGames: playerGames,
+        teamImgRoute: context.params.teamName,
       },
     };
   } catch (err) {
