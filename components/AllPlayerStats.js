@@ -1,7 +1,7 @@
-import fixDecimals from '../helpers/fix-decimals';
-import StatTableCell from './StatTableCell';
-import PlayerCards from './PlayerCards';
-import color from '../helpers/get-team-colors';
+import fixDecimals from "../helpers/fix-decimals";
+import StatTableCell from "./StatTableCell";
+import PlayerCards from "./PlayerCards";
+import color from "../helpers/get-team-colors";
 
 function AllPlayerStats(props) {
   // Map through the games for all five players and create table rows and table data cells with each player's stats
@@ -96,110 +96,152 @@ function AllPlayerStats(props) {
 
   const playerTableData = stats.map((player) => {
     return (
-      <tr key={player.id}>
+      <tr key={player.id} className="has-text-centered">
         <StatTableCell statTotals={player} />
       </tr>
     );
   });
 
-  const theadBackgroundColor =
+  const primaryColor =
     color.teamColor[props.playerData[0].data[0].team.full_name][0];
-  const theadFontColor =
+  const secondaryColor =
     color.teamColor[props.playerData[0].data[0].team.full_name][1];
 
   return (
-    <div className="container">
-      <section>
+    <section className="section">
+      <div className="container py-6">
         <div>
-          <div className="layout-teamNameLogo">
-            <img
-              id="module-teamLogo"
-              src={`https://nba-team.s3.amazonaws.com/${props.teamImgRoute}/${props.teamImgRoute}.png`}
-              alt=""
-            />
-            <h1>{props.playerData[0].data[0].team.full_name}</h1>
-          </div>
-          <div className="modules-teamRecord">
-            <span>2021-2022 Regular Season Record:</span>
-            <span className="modules-overallRecord"></span>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="layout-container">
+          <h2 className="title">Starting Five Averages</h2>
+
           <div>
-            <h2>Starting Five Averages</h2>
-          </div>
-          <div className="layout-playerWrapper modules-firstPlayerStatBox">
             <PlayerCards
               playerAverages={stats}
               teamRoute={props.teamImgRoute}
+              primaryColor={primaryColor}
+              secondaryColor={secondaryColor}
             />
           </div>
         </div>
-      </section>
-      <section>
+      </div>
+      <div className="container py-6">
         <div>
           <h2 className="title">Totals</h2>
           <div className="table-container">
             <table className="table is-fullwidth">
-              <thead style={{ backgroundColor: theadBackgroundColor }}>
+              <thead style={{ backgroundColor: primaryColor }}>
                 <tr className="modules-trHeaderStyle">
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Player name">Name</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Games played">G</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Field goals made">FG</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Field goals attempted">FGA</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Field goals made percentage">FG%</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Three pointers made">3P</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Three pointers attempted">3PA</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Three pointers made percentage">3P%</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Effective field goal percentage">eFG%</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Free throws made">FT</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Free throws attempted">FTA</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Free throws made percentage">FT%</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Rebounds">REB</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Assists">AST</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Steals">STL</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Blocks">BLK</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Turnovers">TOV</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Personal fouls">PF</abbr>
                   </th>
-                  <th style={{ color: theadFontColor }}>
+                  <th
+                    className="has-text-centered"
+                    style={{ color: secondaryColor }}
+                  >
                     <abbr title="Points scored">PTS</abbr>
                   </th>
                 </tr>
@@ -208,8 +250,8 @@ function AllPlayerStats(props) {
             </table>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

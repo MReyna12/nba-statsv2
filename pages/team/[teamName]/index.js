@@ -1,10 +1,45 @@
-import TeamRecord from '../../../components/TeamRecord';
-import AllPlayerStats from '../../../components/AllPlayerStats';
-import playerIDNumbers from '../../../helpers/getPlayerID';
+import TeamRecord from "../../../components/TeamRecord";
+import AllPlayerStats from "../../../components/AllPlayerStats";
+import playerIDNumbers from "../../../helpers/getPlayerID";
+import color from "../../../helpers/get-team-colors";
 
 const team = (props) => {
+  const primaryColor =
+    color.teamColor[props.playerGames[0].data[0].team.full_name][0];
+  const secondaryColor =
+    color.teamColor[props.playerGames[0].data[0].team.full_name][1];
+
   return (
-    <div>
+    <>
+      <section
+        style={{ backgroundColor: primaryColor, color: secondaryColor }}
+        className="section"
+      >
+        <div className="container">
+          <div className="columns">
+            <div className="column is-narrow">
+              <img
+                src={`https://nba-team.s3.amazonaws.com/${props.teamImgRoute}/${props.teamImgRoute}.png`}
+                alt={`The NBA team logo for the ${props.teamName}`}
+              />
+            </div>
+            <div className="column is-four-fifths">
+              <h1
+                style={{ color: secondaryColor }}
+                className="title is-size-1 has-text-weight-bold"
+              >
+                {props.playerGames[0].data[0].team.full_name}
+              </h1>
+              <h2
+                style={{ color: secondaryColor }}
+                className="subtitle is-size-3"
+              >
+                2021-2022 Regular Season Record:
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
       <AllPlayerStats
         playerData={props.playerGames}
         teamImgRoute={props.teamImgRoute}
@@ -13,7 +48,7 @@ const team = (props) => {
         games={props.regularSeasonData.data}
         teamName={props.teamName}
       />
-    </div>
+    </>
   );
 };
 
@@ -22,13 +57,13 @@ export default team;
 export const getStaticProps = async (context) => {
   try {
     // Place the name + the team id into an array
-    const splitName = context.params.teamName.split('-');
+    const splitName = context.params.teamName.split("-");
 
     // The id is always the last element in the splitName array
     const id = splitName[splitName.length - 1];
 
     // Store the team name without the hypens and the id number. The id number is always the last element of the splitName array.
-    const standardTeamName = splitName.slice(0, splitName.length - 1).join(' ');
+    const standardTeamName = splitName.slice(0, splitName.length - 1).join(" ");
 
     // Fetch the team related stats
     const res = await fetch(
@@ -75,7 +110,7 @@ export const getStaticPaths = async () => {
 
   // The teamName matches the teamName route set forth in the Input component.
   const paths = teams.data.map((team) => ({
-    params: { teamName: `${team.full_name.replaceAll(' ', '-')}-${team.id}` },
+    params: { teamName: `${team.full_name.replaceAll(" ", "-")}-${team.id}` },
   }));
 
   return {

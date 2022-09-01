@@ -1,6 +1,6 @@
-import TeamRecordBody from './TeamRecordBody';
-import fixDecimals from '../helpers/fix-decimals';
-import color from '../helpers/get-team-colors';
+import TeamRecordBody from "./TeamRecordBody";
+import fixDecimals from "../helpers/fix-decimals";
+import color from "../helpers/get-team-colors";
 
 function TeamRecord(props) {
   // Determine the home record for the 2021-2022 regular season
@@ -170,32 +170,53 @@ function TeamRecord(props) {
   const theadFontColor = color.teamColor[props.teamName][1];
 
   return (
-    <section>
+    <section className="section">
       <div className="container">
         <h2 className="title">Team Record</h2>
         <div className="table-container">
           <table className="table is-fullwidth">
             <thead style={{ backgroundColor: theadBackgroundColor }}>
               <tr>
-                <th style={{ color: theadFontColor }}>
+                <th
+                  style={{ color: theadFontColor }}
+                  className="has-text-centered"
+                >
                   <abbr title="Wins">W</abbr>
                 </th>
-                <th style={{ color: theadFontColor }}>
+                <th
+                  style={{ color: theadFontColor }}
+                  className="has-text-centered"
+                >
                   <abbr title="Losses">L</abbr>
                 </th>
-                <th style={{ color: theadFontColor }}>
+                <th
+                  style={{ color: theadFontColor }}
+                  className="has-text-centered"
+                >
                   <abbr title="Win Percentage">PCT</abbr>
                 </th>
-                <th style={{ color: theadFontColor }}>
+                <th
+                  style={{ color: theadFontColor }}
+                  className="has-text-centered"
+                >
                   <abbr title="Home Record">HOME</abbr>
                 </th>
-                <th style={{ color: theadFontColor }}>
+                <th
+                  style={{ color: theadFontColor }}
+                  className="has-text-centered"
+                >
                   <abbr title="Away Record">AWAY</abbr>
                 </th>
-                <th style={{ color: theadFontColor }}>
+                <th
+                  style={{ color: theadFontColor }}
+                  className="has-text-centered"
+                >
                   <abbr title="Division Record">DIV</abbr>
                 </th>
-                <th style={{ color: theadFontColor }}>
+                <th
+                  style={{ color: theadFontColor }}
+                  className="has-text-centered"
+                >
                   <abbr title="Conference Record">CONF</abbr>
                 </th>
               </tr>
