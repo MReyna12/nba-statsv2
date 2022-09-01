@@ -1,5 +1,6 @@
 import TeamRecordBody from './TeamRecordBody';
 import fixDecimals from '../helpers/fix-decimals';
+import color from '../helpers/get-team-colors';
 
 function TeamRecord(props) {
   // Determine the home record for the 2021-2022 regular season
@@ -165,34 +166,37 @@ function TeamRecord(props) {
     };
   };
 
+  const theadBackgroundColor = color.teamColor[props.teamName][0];
+  const theadFontColor = color.teamColor[props.teamName][1];
+
   return (
     <section>
-      <div className="layout-container">
-        <h2>Team Record</h2>
-        <div className="state-overflowX">
-          <table className="modules-table">
-            <thead>
-              <tr className="modules-trHeaderStyle">
-                <th className="modules-thHeaderStyle modules-teamColors modules-firstTableCellStyle">
-                  <span>W</span>
+      <div className="container">
+        <h2 className="title">Team Record</h2>
+        <div className="table-container">
+          <table className="table is-fullwidth">
+            <thead style={{ backgroundColor: theadBackgroundColor }}>
+              <tr>
+                <th style={{ color: theadFontColor }}>
+                  <abbr title="Wins">W</abbr>
                 </th>
-                <th className="modules-thHeaderStyle modules-teamColors">
-                  <span>L</span>
+                <th style={{ color: theadFontColor }}>
+                  <abbr title="Losses">L</abbr>
                 </th>
-                <th className="modules-thHeaderStyle modules-teamColors">
-                  <span>PCT</span>
+                <th style={{ color: theadFontColor }}>
+                  <abbr title="Win Percentage">PCT</abbr>
                 </th>
-                <th className="modules-thHeaderStyle modules-teamColors">
-                  <span>HOME</span>
+                <th style={{ color: theadFontColor }}>
+                  <abbr title="Home Record">HOME</abbr>
                 </th>
-                <th className="modules-thHeaderStyle modules-teamColors">
-                  <span>AWAY</span>
+                <th style={{ color: theadFontColor }}>
+                  <abbr title="Away Record">AWAY</abbr>
                 </th>
-                <th className="modules-thHeaderStyle modules-teamColors">
-                  <span>DIV</span>
+                <th style={{ color: theadFontColor }}>
+                  <abbr title="Division Record">DIV</abbr>
                 </th>
-                <th className="modules-thHeaderStyle modules-teamColors modules-lastTableCellStyle">
-                  <span>CONF</span>
+                <th style={{ color: theadFontColor }}>
+                  <abbr title="Conference Record">CONF</abbr>
                 </th>
               </tr>
             </thead>
