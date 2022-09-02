@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Input = (props) => {
   const [inputData, setInputData] = useState({
-    teamName: '',
+    teamName: "",
   });
 
   const [alert, setAlert] = useState();
+
+  const [loadingStatus, setLoadingStatus] = useState(false);
 
   function handleChange(event) {
     setInputData((prevInputData) => {
@@ -19,7 +21,7 @@ const Input = (props) => {
 
   const router = useRouter();
 
-  const route = inputData.teamName.replaceAll(' ', '-');
+  const route = inputData.teamName.replaceAll(" ", "-");
   console.log(route);
 
   function handleSubmit(event) {
@@ -43,6 +45,10 @@ const Input = (props) => {
   const options = props.teamInfo.map((team) => {
     return <option key={team.id} value={team.teamName} />;
   });
+
+  function handleLoading() {
+    setLoadingStatus(true);
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -68,7 +74,14 @@ const Input = (props) => {
       )}
       <div className="field">
         <div className="control has-text-centered">
-          <button className="button">Search</button>
+          <button
+            className={`button is-black is-fullwidth ${
+              loadingStatus && "is-loading"
+            }`}
+            onClick={handleLoading}
+          >
+            Search
+          </button>
         </div>
       </div>
     </form>

@@ -31,10 +31,12 @@ function PlayerCards(props) {
               <li>
                 <div>
                   <div>
-                    <span className="has-text-weight-bold">PTS</span>
+                    <span className="has-text-weight-bold has-text-black">
+                      PTS
+                    </span>
                   </div>
                   <div>
-                    <span className="has-text-weight-bold">
+                    <span className="has-text-weight-bold has-text-black">
                       {player.pointsPerGame}
                     </span>
                   </div>
@@ -43,10 +45,12 @@ function PlayerCards(props) {
               <li>
                 <div>
                   <div>
-                    <span className="has-text-weight-bold">REB</span>
+                    <span className="has-text-weight-bold has-text-black">
+                      REB
+                    </span>
                   </div>
                   <div>
-                    <span className="has-text-weight-bold">
+                    <span className="has-text-weight-bold has-text-black">
                       {player.reboundsPerGame}
                     </span>
                   </div>
@@ -55,10 +59,12 @@ function PlayerCards(props) {
               <li>
                 <div>
                   <div>
-                    <span className="has-text-weight-bold">AST</span>
+                    <span className="has-text-weight-bold has-text-black">
+                      AST
+                    </span>
                   </div>
                   <div>
-                    <span className="has-text-weight-bold">
+                    <span className="has-text-weight-bold has-text-black">
                       {player.assistsPerGame}
                     </span>
                   </div>
