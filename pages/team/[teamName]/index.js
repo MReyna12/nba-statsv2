@@ -1,29 +1,41 @@
 import TeamRecord from "../../../components/TeamRecord";
 import AllPlayerStats from "../../../components/AllPlayerStats";
+import Nav from "../../../components/Nav";
 import playerIDNumbers from "../../../helpers/getPlayerID";
+import Input from "../../../components/Input";
 import color from "../../../helpers/get-team-colors";
 
 const team = (props) => {
+  // Team colors to generate styles based on the team page
   const primaryColor =
     color.teamColor[props.playerGames[0].data[0].team.full_name][0];
   const secondaryColor =
     color.teamColor[props.playerGames[0].data[0].team.full_name][1];
 
+  // In order for the Input component to work outside of the home page, passing the same teams prop to the Input component
+  const allTeams = props.teams.data.map((team) => {
+    return {
+      teamName: team.full_name,
+      id: team.id,
+    };
+  });
+
   return (
     <>
+      <Nav primaryColor={primaryColor} />
       <section
         style={{ backgroundColor: primaryColor, color: secondaryColor }}
         className="section"
       >
-        <div className="container">
-          <div className="columns">
+        <div className="container py-6">
+          <div className="columns is-flex is-align-items-center">
             <div className="column is-narrow">
               <img
                 src={`https://nba-team.s3.amazonaws.com/${props.teamImgRoute}/${props.teamImgRoute}.png`}
                 alt={`The NBA team logo for the ${props.teamName}`}
               />
             </div>
-            <div className="column is-four-fifths">
+            <div className="column is-three-fifths">
               <h1
                 style={{ color: secondaryColor }}
                 className="title is-size-1 has-text-weight-bold"
@@ -36,6 +48,9 @@ const team = (props) => {
               >
                 2021-2022 Regular Season Record:
               </h2>
+            </div>
+            <div className="column">
+              <Input teamInfo={allTeams} />
             </div>
           </div>
         </div>
@@ -91,12 +106,16 @@ export const getStaticProps = async (context) => {
 
     const playerGames = await fetchPlayerGames();
 
+    const teamRes = await fetch(`https://www.balldontlie.io/api/v1/teams`);
+    const teams = await teamRes.json();
+
     return {
       props: {
         regularSeasonData: regularSeasonData,
         teamName: standardTeamName,
         playerGames: playerGames,
         teamImgRoute: context.params.teamName,
+        teams: teams,
       },
     };
   } catch (err) {

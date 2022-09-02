@@ -1,14 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const Input = (props) => {
-  const [inputData, setInputData] = useState({
-    teamName: "",
-  });
+  const router = useRouter();
+
+  const initialInputData = { teamName: "" };
+
+  const [inputData, setInputData] = useState(initialInputData);
 
   const [alert, setAlert] = useState();
 
   const [loadingStatus, setLoadingStatus] = useState(false);
+
+  const route = inputData.teamName.replaceAll(" ", "-");
+
+  // Turns off the loading spinner on the button and clears the input field once the route has changed
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setLoadingStatus(false);
+      setInputData({ ...initialInputData });
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, []);
 
   function handleChange(event) {
     setInputData((prevInputData) => {
@@ -19,18 +36,15 @@ const Input = (props) => {
     });
   }
 
-  const router = useRouter();
-
-  const route = inputData.teamName.replaceAll(" ", "-");
-  console.log(route);
-
   function handleSubmit(event) {
     event.preventDefault();
+
     const teamExists = props.teamInfo.find(
       (team) => team.teamName === inputData.teamName
     );
 
     if (teamExists) {
+      setLoadingStatus(true);
       router.push(`/team/` + route + `-${teamExists.id}`);
     } else if (!teamExists) {
       setAlert(true);
@@ -45,10 +59,6 @@ const Input = (props) => {
   const options = props.teamInfo.map((team) => {
     return <option key={team.id} value={team.teamName} />;
   });
-
-  function handleLoading() {
-    setLoadingStatus(true);
-  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -78,7 +88,6 @@ const Input = (props) => {
             className={`button is-black is-fullwidth ${
               loadingStatus && "is-loading"
             }`}
-            onClick={handleLoading}
           >
             Search
           </button>

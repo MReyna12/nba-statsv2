@@ -1,23 +1,23 @@
 import Link from "next/link";
-import Image from "next/image";
-import startingFiveLogo from "../public/starting-five.png";
 
-function Nav() {
+function Nav(props) {
   return (
     <nav
-      className="navbar has-background-primary"
+      style={{ backgroundColor: props.primaryColor }}
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="container">
-        <div className="navbar-brand">
+      <section className="section">
+        <div className="container">
           <Link href="/">
             <a>
-              <Image src={startingFiveLogo} width={200} height={80} />
+              <h1 className="title has-text-bold has-text-white">
+                Starting Five
+              </h1>
             </a>
           </Link>
         </div>
-      </div>
+      </section>
     </nav>
   );
 }
