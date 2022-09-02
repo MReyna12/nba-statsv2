@@ -5,7 +5,7 @@ function PlayerCards(props) {
   const card = props.playerAverages.map((player) => {
     const playerNameRoute = player.playerName.split(" ").join("-");
     return (
-      <div className="column is-one-fifth">
+      <div className="column is-two-thirds-mobile is-one-fifth">
         <div className="card">
           <div className="card-image">
             <h4
