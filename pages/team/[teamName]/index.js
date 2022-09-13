@@ -68,7 +68,6 @@ export default team;
 
 export const getStaticProps = async (context) => {
   try {
-    await avoidRateLimit();
     // Place the name + the team id into an array
     const splitName = context.params.teamName.split("-");
 
@@ -80,6 +79,7 @@ export const getStaticProps = async (context) => {
 
     // Fetch the team related stats
     const fetchTeamStats = async () => {
+      await avoidRateLimit();
       const res = await fetch(
         `https://www.balldontlie.io/api/v1/games?seasons[]=2021&team_ids[]=${id}&per_page=100&start_date=2021-10-19&end_date=2022-04-11`
       );
@@ -101,6 +101,7 @@ export const getStaticProps = async (context) => {
     ];
 
     const fetchPlayerGames = async () => {
+      await avoidRateLimit();
       const playerRes = await Promise.all(
         playerUrls.map((url) => fetch(url).then((res) => res.json()))
       );
