@@ -8,7 +8,7 @@ import color from "../../../helpers/get-team-colors";
 const team = (props) => {
   // Team colors to generate styles based on the team page
   const primaryColor =
-    color.teamColor[props.playerGames[0].data[0].team.full_name][0];
+    color.teamColor[props.playerGames[1].data[0].team.full_name][0];
   const secondaryColor =
     color.teamColor[props.playerGames[0].data[0].team.full_name][1];
 
