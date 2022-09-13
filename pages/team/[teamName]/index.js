@@ -29,12 +29,6 @@ const team = (props) => {
       >
         <div className="container py-6">
           <div className="columns is-desktop is-align-items-center">
-            <div className="column is-narrow">
-              <img
-                src={`https://nba-team.s3.amazonaws.com/${props.teamImgRoute}/${props.teamImgRoute}.png`}
-                alt={`The NBA team logo for the ${props.teamName}`}
-              />
-            </div>
             <div className="column is-three-fifths-desktop">
               <h1
                 style={{ color: secondaryColor }}
@@ -46,7 +40,7 @@ const team = (props) => {
                 style={{ color: secondaryColor }}
                 className="subtitle is-size-3"
               >
-                2021-2022 Regular Season Record:
+                2021-2022 Regular Season
               </h2>
             </div>
             <div className="column">
