@@ -3,6 +3,7 @@ import TeamRecord from "../../../components/TeamRecord";
 import AllPlayerStats from "../../../components/AllPlayerStats";
 import Nav from "../../../components/Nav";
 import playerIDNumbers from "../../../helpers/getPlayerID";
+import { avoidRateLimit } from "../../../helpers/avoid-rate-limit";
 import Input from "../../../components/Input";
 import color from "../../../helpers/get-team-colors";
 
@@ -67,6 +68,7 @@ export default team;
 
 export const getStaticProps = async (context) => {
   try {
+    avoidRateLimit();
     // Place the name + the team id into an array
     const splitName = context.params.teamName.split("-");
 
