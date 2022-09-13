@@ -81,6 +81,7 @@ export const getStaticProps = async (context) => {
       `https://www.balldontlie.io/api/v1/games?seasons[]=2021&team_ids[]=${id}&per_page=100&start_date=2021-10-19&end_date=2022-04-11`
     );
     const regularSeasonData = await res.json();
+    console.log(typeof regularSeasonData);
 
     // Fetch the player related stats - because the API does not provide an easy way to find player IDs without searching through thousands of players, I manually found the player Ids and put them into a helper object
     const playerIds = playerIDNumbers.playerID[standardTeamName];
