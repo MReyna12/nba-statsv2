@@ -107,11 +107,11 @@ export const getStaticProps = async (context) => {
 
     return {
       props: {
-        regularSeasonData: regularSeasonData,
-        teamName: standardTeamName,
-        playerGames: playerGames,
-        teamImgRoute: context.params.teamName,
-        teams: teams,
+        regularSeasonData: regularSeasonData || null,
+        teamName: standardTeamName || null,
+        playerGames: playerGames || null,
+        teamImgRoute: context.params.teamName || null,
+        teams: teams || null,
       },
     };
   } catch (err) {
