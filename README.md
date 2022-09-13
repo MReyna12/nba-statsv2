@@ -1,34 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Starting Five
 
-## Getting Started
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Overview](#Overview)
+  - [Screenshot](#Screenshot)
+  - [Links](#Links)
+- [My Process](#My-Process)
+  - [Built With](#Built-With)
+  - [How It Works](#How-It-Works)
+- [Author](#Author)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Screenshot
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+![image](https://user-images.githubusercontent.com/37000585/190025231-ab8b9568-42bc-4b56-bc58-cff88e0361e9.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Links
 
-## Learn More
+- [Search NBA teams!](https://nba-statsv2.vercel.app/)
 
-To learn more about Next.js, take a look at the following resources:
+## My Process
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Built With
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- React
+- Next
+- Javascript
+- Bulma
+- AWS S3
 
-## Deploy on Vercel
+***DISCLAIMER***
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Unfortunately, the BallDontLie API (the "API") has a number of games with unfinished data, so some of the information provided to the user will not be 100% accurate.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### How It Works
+
+Upon entering the full name of an NBA team (e.g. Dallas Mavericks) and clicking search, the applicable team/player information is fetched from the API and rendered to the DOM.
+
+If a user does not enter a correct team name, an error message populates under the search bar and informs the user to enter a correct team name.
+
+#### Team Related Data
+
+The team related functions use the team data to do the following:
+- (1) obtain the home and visitor games;
+- (2) determine the home and visitor record (wins/losses);
+- (3) filter through the data to return the division and conference of the team entered by the user and produce the division and conference records;
+- (4) combine the total home and visitor wins and losses to return the overall record for the team; and
+- (5) sets the background color for various elements to the applicable team's primary color.
+
+#### Player Related Data 
+
+The functions associated with the players perform the following actions:
+- (1) totals all of the field goals, three pointers, free throws, points, games played, rebounds, assists, blocks, steals, turnovers, and fouls made/attempted, as applicable;
+- (2) determines the name of all five players;
+- (3) calculates the field goal, free throw, three pointer, and effective field goal percentages;
+- (4) calculate the points, rebounds, and assists per game; and
+- (5) determines which set of player photos to use.
+
+
+## Author
+
+- Twitter - [@michaelpreyna](https://twitter.com/michaelpreyna)
+- LinkedIn - [@michaelpreyna](https://www.linkedin.com/in/michaelpreyna/)
