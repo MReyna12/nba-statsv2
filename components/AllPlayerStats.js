@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import fixDecimals from "../helpers/fix-decimals";
 import StatTableCell from "./StatTableCell";
 import PlayerCards from "./PlayerCards";
@@ -96,7 +97,7 @@ function AllPlayerStats(props) {
 
   const playerTableData = stats.map((player) => {
     return (
-      <tr key={player.id} className="has-text-centered">
+      <tr key={nanoid()} className="has-text-centered">
         <StatTableCell statTotals={player} />
       </tr>
     );

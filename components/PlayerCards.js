@@ -1,11 +1,12 @@
 import Image from "next/image";
+import { nanoid } from "nanoid";
 
 function PlayerCards(props) {
   const team = props.teamRoute;
   const card = props.playerAverages.map((player) => {
     const playerNameRoute = player.playerName.split(" ").join("-");
     return (
-      <div className="column is-one-third">
+      <div key={nanoid()} className="column is-one-third">
         <div className="card">
           <div className="card-image">
             <h4

@@ -34,7 +34,7 @@ const team = (props) => {
                 style={{ color: secondaryColor }}
                 className="title is-size-1 has-text-weight-bold"
               >
-                {props.playerGames[0].data[0].team.full_name}
+                {props.playerGames[3].data[0].team.full_name}
               </h1>
               <h2
                 style={{ color: secondaryColor }}
