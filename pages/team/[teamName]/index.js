@@ -68,7 +68,7 @@ export default team;
 
 export const getStaticProps = async (context) => {
   try {
-    avoidRateLimit();
+    await avoidRateLimit();
     // Place the name + the team id into an array
     const splitName = context.params.teamName.split("-");
 
