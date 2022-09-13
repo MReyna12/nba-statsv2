@@ -9,7 +9,7 @@ function PlayerCards(props) {
       <div key={nanoid()} className="column is-one-third">
         <div className="card">
           <div className="card-image">
-            <h4
+            <h3
               style={{
                 backgroundColor: props.primaryColor,
                 color: props.secondaryColor,
@@ -17,7 +17,7 @@ function PlayerCards(props) {
               className="card-header-title is-centered"
             >
               {player.playerName}
-            </h4>
+            </h3>
             <figure className="image has-text-centered mt-4">
               <Image
                 src={`https://nba-team.s3.amazonaws.com/${team}/${playerNameRoute}.png`}

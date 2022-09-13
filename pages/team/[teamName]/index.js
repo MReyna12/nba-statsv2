@@ -1,3 +1,4 @@
+import HeadData from "../../../components/Head";
 import TeamRecord from "../../../components/TeamRecord";
 import AllPlayerStats from "../../../components/AllPlayerStats";
 import Nav from "../../../components/Nav";
@@ -22,6 +23,7 @@ const team = (props) => {
 
   return (
     <>
+      <HeadData />
       <Nav primaryColor={primaryColor} />
       <section
         style={{ backgroundColor: primaryColor, color: secondaryColor }}
