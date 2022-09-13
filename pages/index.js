@@ -3,7 +3,7 @@ import Input from "../components/Input";
 import homeStyles from "../styles/Home.module.css";
 
 export default function Home(props) {
-  const teams = props.data.map((team) => {
+  const teams = props.teams.data.map((team) => {
     return {
       teamName: team.full_name,
       id: team.id,
@@ -43,6 +43,8 @@ export const getStaticProps = async () => {
   const teams = await res.json();
 
   return {
-    props: teams,
+    props: {
+      teams,
+    },
   };
 };
