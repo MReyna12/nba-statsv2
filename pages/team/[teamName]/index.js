@@ -8,9 +8,9 @@ import color from "../../../helpers/get-team-colors";
 const team = (props) => {
   // Team colors to generate styles based on the team page
   const primaryColor =
-    color.teamColor[props.playerGames[1].data[0].team.full_name][0];
+    color.teamColor[props.playerGames[3].data[0].team.full_name][0];
   const secondaryColor =
-    color.teamColor[props.playerGames[0].data[0].team.full_name][1];
+    color.teamColor[props.playerGames[3].data[0].team.full_name][1];
 
   // In order for the Input component to work outside of the home page, passing the same teams prop to the Input component
   const allTeams = props.teams.data.map((team) => {
@@ -28,14 +28,14 @@ const team = (props) => {
         className="section"
       >
         <div className="container py-6">
-          <div className="columns is-flex is-align-items-center">
+          <div className="columns is-desktop is-align-items-center">
             <div className="column is-narrow">
               <img
                 src={`https://nba-team.s3.amazonaws.com/${props.teamImgRoute}/${props.teamImgRoute}.png`}
                 alt={`The NBA team logo for the ${props.teamName}`}
               />
             </div>
-            <div className="column is-three-fifths">
+            <div className="column is-three-fifths-desktop">
               <h1
                 style={{ color: secondaryColor }}
                 className="title is-size-1 has-text-weight-bold"

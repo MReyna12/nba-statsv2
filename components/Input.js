@@ -85,7 +85,7 @@ const Input = (props) => {
       <div className="field">
         <div className="control has-text-centered">
           <button
-            className={`button is-black is-fullwidth ${
+            className={`button is-white is-fullwidth ${
               loadingStatus && "is-loading"
             }`}
           >

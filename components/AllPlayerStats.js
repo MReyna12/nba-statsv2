@@ -103,9 +103,9 @@ function AllPlayerStats(props) {
   });
 
   const primaryColor =
-    color.teamColor[props.playerData[1].data[0].team.full_name][0];
+    color.teamColor[props.playerData[3].data[0].team.full_name][0];
   const secondaryColor =
-    color.teamColor[props.playerData[0].data[0].team.full_name][1];
+    color.teamColor[props.playerData[3].data[0].team.full_name][1];
 
   return (
     <section className="section">

@@ -5,7 +5,7 @@ function PlayerCards(props) {
   const card = props.playerAverages.map((player) => {
     const playerNameRoute = player.playerName.split(" ").join("-");
     return (
-      <div className="column is-two-thirds-mobile is-one-fifth">
+      <div className="column is-one-third">
         <div className="card">
           <div className="card-image">
             <h4
@@ -27,7 +27,7 @@ function PlayerCards(props) {
             </figure>
           </div>
           <div className="card-content">
-            <ul className="is-flex is-justify-content-space-between has-text-centered">
+            <ul className="is-flex is-justify-content-space-evenly has-text-centered">
               <li>
                 <div>
                   <div>
@@ -77,7 +77,7 @@ function PlayerCards(props) {
     );
   });
 
-  return <div className="columns">{card}</div>;
+  return <div className="columns is-multiline">{card}</div>;
 }
 
 export default PlayerCards;
