@@ -61,7 +61,7 @@ const Input = (props) => {
   });
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autoComplete="off">
       <div className="field">
         <div className="control">
           <input
