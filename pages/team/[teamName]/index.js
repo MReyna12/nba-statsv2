@@ -116,7 +116,6 @@ export const getStaticProps = async (context) => {
     };
   } catch (err) {
     console.error(err);
-    console.log(typeof regularSeasonData);
   }
 };
 
